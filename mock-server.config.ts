@@ -23,7 +23,7 @@ const mockServerConfig: MockServerConfig = {
             data: { error: 'invalid_credentials' },
             entities: {
               body: {
-                email: 'sergeysova@gmail.com',
+                email: 'jantttez@gmail.com',
               },
             },
             interceptors: {
@@ -34,11 +34,11 @@ const mockServerConfig: MockServerConfig = {
             },
           },
           {
-            data: { email: 'sergeysova@gmail.com', username: 'sergeysova' },
+            data: { email: 'jantttez@gmail.com', username: 'jantttez' },
             entities: {
               body: {
-                email: 'sergeysova@gmail.com',
-                password: 'qweasd123',
+                email: 'jantttez@gmail.com',
+                password: 'jjjjjj',
               },
             },
             interceptors: {
