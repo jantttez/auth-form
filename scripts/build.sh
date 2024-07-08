@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SECOND_TO_TEST=60
+PORT=8090
+
+docker build -t app:authForm . -f Dockerfile
+
+docker run -p ${PORT}:8000 -d --name authForm --rm app:authForm
+
+
+echo "Go to your web browseк and link to localhost:${PORT}"
+
+echo "You have ${SECOND_TO_TEST} second to test"
+
+sleep ${SECOND_TO_TEST}
+
+docker stop authForm
+
+docker rmi app:authForm --force
+
