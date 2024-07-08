@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '8000:8000'
+    volumes:
+      - '/home/jantttez/Documents/projects/auth-form:/app'
+
+  mock:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - '31299:31299'
+    depends_on:
+      - app

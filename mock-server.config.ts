@@ -7,7 +7,7 @@ const mockServerConfig: MockServerConfig = {
     baseUrl: '/api',
     configs: [
       {
-        path: '/login',
+        path: '/signin',
         method: 'post',
         routes: [
           {
@@ -51,7 +51,7 @@ const mockServerConfig: MockServerConfig = {
         ],
       },
       {
-        path: '/signup',
+        path: '/register',
         method: 'post',
         routes: [
           {

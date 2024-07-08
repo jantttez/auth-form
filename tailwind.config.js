@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        'bg-primary': 'rgba(5,5,5,0.9)',
+        'bg-primary': 'rgba(5,5,5,0.99)',
       },
     },
   },
