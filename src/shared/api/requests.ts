@@ -51,3 +51,11 @@ export const registerFx = createEffect<Register, RegisterReturnStatus | any, Reg
     body: form,
   });
 });
+
+interface RegisterResponse = {
+  data: any
+}
+
+export const regisetr =({ params, config }: <AxiosRequestConfig<Register>>) => {
+    api.get<RegisterResponse>('/register',  params, config })
+}
