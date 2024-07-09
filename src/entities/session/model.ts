@@ -8,5 +8,3 @@ export interface User {
 export const $user = createStore<User | null>(null);
 
 export const $registerStatus = createStore<any | null>(null, { skipVoid: false });
-
-$registerStatus.watch((state) => console.log(state));

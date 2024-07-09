@@ -1,31 +1,32 @@
-import { attach, createEvent, createStore, sample } from 'effector';
+import { attach, createEvent, createStore, EventCallable, sample } from 'effector';
 import { formLib } from '@shared/lib';
 import * as api from '@shared/api';
 import { $user } from '@entities/session';
 
 const signInfx = attach({ effect: api.signInFx });
 
-export const emailChanged = createEvent<string>();
-export const passwordChanged = createEvent<string>();
+const createField = <T, Error>(defaultState: T, resetForm?: EventCallable<void>) => {
+  const fieldChanged = createEvent<T>();
+  const $field = resetForm ? createStore(defaultState).reset(resetForm) : createStore(defaultState);
+  const $fieldError = resetForm ? createStore<Error | null>(null).reset(resetForm) : createStore<Error | null>(null);
+
+  $field.on(fieldChanged, (_, data) => data);
+
+  return [$field, fieldChanged, $fieldError] as const;
+};
 
 export const resetForm = createEvent();
+
+export const [$email, emailChanged, $emailError] = createField<string, any>('', resetForm);
+export const [$password, passwordChanged, $passwordError] = createField<string, any>('', resetForm);
+
 export const formSubmited = createEvent();
-
-export const $email = createStore('').reset(resetForm);
-export const $emailError = createStore('').reset([resetForm, formSubmited]);
-
-export const $password = createStore('').reset(resetForm);
-export const $passwordError = createStore('').reset([resetForm, formSubmited]);
 
 export const $loginFormError = createStore<api.SignInError | null>(null);
 
 const formValid = () => {
   return !!$emailError && !!$passwordError;
 };
-
-$email.on(emailChanged, (_, data) => data);
-
-$password.on(passwordChanged, (_, data) => data);
 
 $loginFormError.on(signInfx.failData, (_, error) => error.response.data.error);
 
