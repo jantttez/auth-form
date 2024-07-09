@@ -56,6 +56,6 @@ interface RegisterResponse = {
   data: any
 }
 
-export const regisetr =({params, config?}: <AxiosRequestConfig<Register>>) => {
+export const regisetr =({ params, config }: <AxiosRequestConfig<Register>>) => {
     api.get<RegisterResponse>('/register',  params, config })
 }
