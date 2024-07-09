@@ -52,10 +52,10 @@ export const registerFx = createEffect<Register, RegisterReturnStatus | any, Reg
   });
 });
 
-interface RegisterResponse = {
-  data: any
+interface RegisterResponse {
+  data: any;
 }
 
-export const regisetr =({ params, config }: <AxiosRequestConfig<Register>>) => {
-    api.get<RegisterResponse>('/register',  params, config })
-}
+export const regisetr = ({ params, config }: AxiosRequestConfig<Register>) => {
+  api.get<RegisterResponse>('/register', params, config);
+};
