@@ -1,3 +1,4 @@
+import { HomePage } from '@pages/home';
 import { LoginPage } from '@pages/login';
 import { RegisterPage } from '@pages/register';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <div>main</div>,
+    element: <HomePage />,
   },
 ]);
 

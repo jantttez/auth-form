@@ -1,6 +1,7 @@
 import { attach, createEvent, createStore, sample } from 'effector';
-import * as lib from './lib';
+import { formLib } from '@shared/lib';
 import * as api from '@shared/api';
+import { $user } from '@entities/session';
 
 const signInfx = attach({ effect: api.signInFx });
 
@@ -18,7 +19,6 @@ export const $passwordError = createStore('').reset([resetForm, formSubmited]);
 
 export const $loginFormError = createStore<api.SignInError | null>(null);
 
-export const $user = createStore<api.User | null>(null);
 const formValid = () => {
   return !!$emailError && !!$passwordError;
 };
@@ -29,17 +29,17 @@ $password.on(passwordChanged, (_, data) => data);
 
 $loginFormError.on(signInfx.failData, (_, error) => error.response.data.error);
 
-$loginFormError.watch((state) => console.log(state));
+$loginFormError.on(signInfx.done, (_) => null);
 
-$user.watch((state) => console.log(state));
+$loginFormError.watch((state) => console.log(state));
 
 sample({
   clock: formSubmited,
   source: $email,
   fn: (email) => {
-    if (lib.isEmpty(email)) return 'empty';
-    if (!lib.emailValid(email)) return 'invalid';
-    return ''; // опасное место
+    if (formLib.isEmpty(email)) return 'empty';
+    if (!formLib.emailValid(email)) return 'invalid';
+    return '';
   },
   target: $emailError,
 });
@@ -48,8 +48,8 @@ sample({
   clock: formSubmited,
   source: $password,
   fn: (password) => {
-    if (lib.isEmpty(password)) return 'empty';
-    if (!lib.passwordValid(password)) return 'invalid';
+    if (formLib.isEmpty(password)) return 'empty';
+    if (!formLib.passwordValid(password)) return 'invalid';
     return ''; //такое же опасно место
   },
   target: $passwordError,

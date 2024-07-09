@@ -11,3 +11,22 @@
 ты эту ошибку уже както обрабатываешь и показываешь клиенту
 
 и все ты это делаешь через сторы ошибок и семплы в еффекторе, когда обычно бы ты это делал условно через запрос к переменной ответ, и его бы уже бубенил
+
+<!--
+          {
+            entities: {
+              body: {
+                username: 'jantttez',
+                email: 'jantttez@gmail.com',
+                password: 'jjjjjj',
+              },
+            },
+            data: { error: 'user_exist' },
+            interceptors: {
+              response: (data, { setStatusCode }) => {
+                setStatusCode(403);
+                return data;
+              },
+            },
+          },
+-->

@@ -17,3 +17,5 @@ services:
       - '31299:31299'
     depends_on:
       - app
+    volumes:
+      - '/home/jantttez/Documents/projects/auth-form/mock-server.config.ts:/app/mock-server.config.ts'

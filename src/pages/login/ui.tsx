@@ -2,7 +2,7 @@ import { Button, TextInput, Title, PasswordInput, Anchor, Text } from '@mantine/
 import { routes } from '@shared/constant';
 import { useUnit } from 'effector-react';
 import * as model from './model.ts';
-import { ErrorPreview } from '@entities/error';
+import { ErrorLogin } from '@entities/error';
 
 const emailErrorText: Record<string, string> = {
   empty: 'Email не может быть пустым',
@@ -33,8 +33,8 @@ export const LoginPage = () => {
 
   return (
     <div className='flex flex-col w-full h-screen justify-center items-center bg-bg-primary'>
+      <ErrorLogin />
       <Title style={{ color: 'white' }}>Welcome back!</Title>
-      <ErrorPreview />
       <form onSubmit={formhandler}>
         <TextInput
           label='email'

@@ -55,6 +55,13 @@ const mockServerConfig: MockServerConfig = {
         method: 'post',
         routes: [
           {
+            entities: {
+              body: {
+                username: 'jantttez',
+                email: 'jantttez@gmail.com', //почему то не работает я сам не могу понять почему, user exist не возвращается когда все филды вот такие, хотя должен.
+                password: 'jjjjjj',
+              },
+            },
             data: { error: 'user_exist' },
             interceptors: {
               response: (data, { setStatusCode }) => {
@@ -66,9 +73,9 @@ const mockServerConfig: MockServerConfig = {
           {
             data: { success: true },
             interceptors: {
-              response: (data, { appendHeader, request }) => {
+              response: (data, { appendHeader }) => {
                 appendHeader('Set-Cookie', 'token=auth-user-token;Max-Age=3600;Path=/;HttpOnly');
-                return { ...request.body.email };
+                return data;
               },
             },
           },
