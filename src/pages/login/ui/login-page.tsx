@@ -4,11 +4,12 @@ import { useUnit } from 'effector-react';
 import { LoginFormModel } from '@features/login';
 import { EmailField, LoginForm, PasswordField } from '@features/login';
 import { LoginErrorPreview } from './login-error-preview';
+import { FormEvent } from 'react';
 
 export const LoginPage = () => {
   const formSubmited = useUnit(LoginFormModel.formSubmited);
 
-  const formhandler = (e: any) => {
+  const formhandler = (e: FormEvent) => {
     e.preventDefault();
     formSubmited();
   };
@@ -35,5 +36,3 @@ export const LoginPage = () => {
     </div>
   );
 };
-
-//хз мб нужно было создать ui папку и в ней двумя файлами сделать ерор превью, но мне в падлу если честно.

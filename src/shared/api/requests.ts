@@ -44,13 +44,15 @@ export interface Register {
 export type RegisterError = { error: 'user_exist' };
 export type RegisterReturnStatus = { success: true };
 
-export const registerFx = createEffect<Register, RegisterReturnStatus | any, RegisterError | any>(async (form) => {
-  return requestFx({
-    method: 'POST',
-    url: '/register',
-    body: form,
-  });
-});
+export const registerFx = createEffect<Register, RegisterReturnStatus | any, RegisterError | any>(
+  async (form) => {
+    return requestFx({
+      method: 'POST',
+      url: '/register',
+      body: form,
+    });
+  }
+);
 
 //interface RegisterResponse {
 //  data: any;

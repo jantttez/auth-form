@@ -8,7 +8,9 @@ const signInfx = attach({ effect: api.signInFx });
 const createField = <T, Error>(defaultState: T, resetForm?: EventCallable<void>) => {
   const fieldChanged = createEvent<T>();
   const $field = resetForm ? createStore(defaultState).reset(resetForm) : createStore(defaultState);
-  const $fieldError = resetForm ? createStore<Error | null>(null).reset(resetForm) : createStore<Error | null>(null);
+  const $fieldError = resetForm
+    ? createStore<Error | null>(null).reset(resetForm)
+    : createStore<Error | null>(null);
 
   $field.on(fieldChanged, (_, data) => data);
 
@@ -22,7 +24,7 @@ export const [$password, passwordChanged, $passwordError] = createField<string, 
 
 export const formSubmited = createEvent();
 
-export const $loginFormError = createStore<api.SignInError | null>(null);
+export const $loginFormError = createStore<api.SignInError | string | null>(null);
 
 const formValid = () => {
   return !!$emailError && !!$passwordError;

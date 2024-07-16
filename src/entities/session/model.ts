@@ -7,4 +7,4 @@ export interface User {
 
 export const $user = createStore<User | null>(null);
 
-export const $registerStatus = createStore<any | null>(null, { skipVoid: false });
+export const $registerStatus = createStore<boolean | null>(null, { skipVoid: false });

@@ -1,7 +1,6 @@
-import React from 'react';
 import { AppRouter, UiProvider } from './providers';
 
-export const App: React.FC = () => {
+export const App = () => {
   return (
     <UiProvider>
       <AppRouter />

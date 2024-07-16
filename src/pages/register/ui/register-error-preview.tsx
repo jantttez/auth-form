@@ -5,7 +5,8 @@ import { useUnit } from 'effector-react';
 export const ErrorRegister = () => {
   const [registerFormError] = useUnit([RegisterFormModel.$registerFormError]);
 
-  if (registerFormError === 'user_exist') return <Text c={'red'}>Такой пользователь уже существует</Text>;
+  if (registerFormError === 'user_exist')
+    return <Text c={'red'}>Такой пользователь уже существует</Text>;
 
   return null;
 };

@@ -12,9 +12,9 @@ const createField = <T, Error>(defaultState: T) => {
   return [$field, fieldChanged, $fieldError] as const;
 };
 
-export const [$email, emailChanged, $emailError] = createField<string, any>('');
-export const [$username, usernameChanged, $usernameError] = createField<string, any>('');
-export const [$password, passwordChanged, $passwordError] = createField<string, any>('');
+export const [$email, emailChanged, $emailError] = createField<string, Error>('');
+export const [$username, usernameChanged, $usernameError] = createField<string, Error>('');
+export const [$password, passwordChanged, $passwordError] = createField<string, Error>('');
 
 export const resetForm = createEvent();
 export const regFormSubmited = createEvent();

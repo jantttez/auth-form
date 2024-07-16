@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { FormEvent, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  onSubmitAction: (e: any) => void;
+  onSubmitAction: (e: FormEvent<HTMLFormElement>) => void;
   className?: string;
 }
 
